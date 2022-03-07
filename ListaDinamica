@@ -1,0 +1,95 @@
+public class ListaDinamica {
+
+    private No primeiro;
+    private No ultimo;
+    int contador = 0;
+
+    public ListaDinamica() {
+        primeiro = null;
+        ultimo = null;
+    }
+
+    //adicionar na lista
+    public void add(int valor) {
+        No novo = new No(valor);
+
+        if (primeiro == null) {
+            primeiro = novo;
+            ultimo = novo;
+        } else {
+            ultimo.proximo = novo;
+            ultimo = novo;
+        }
+
+        contador++;
+    }
+
+    //mostrar lista
+    public void show() {
+        No atual = primeiro;
+
+        while (atual != null) {
+            System.out.println(atual.valor + "");
+            atual = atual.proximo;
+        }
+
+    }
+
+    //buscar numero específico
+    public void buscar(int numero) {
+        No aux = primeiro;
+
+        while(aux.proximo != null){
+
+            if(aux.valor == numero){
+                System.out.println("Número " + numero + " encontrado!");
+                break;
+            }
+
+            else{
+                aux = aux.proximo;
+            }
+        }
+
+        if(ultimo.valor == numero){
+            System.out.println("Número " + numero + " encontrado!");
+        }
+    }
+
+    //metodo get, pegar numero pela posição na lista
+    public int get(int pos){
+        No aux = primeiro;
+        for(int i = 0; i < pos-1; i++){
+            aux = aux.proximo;
+        }
+        return aux.valor;
+    }
+
+    public void remover(int numero){
+        No aux = primeiro;
+        while(aux.proximo != null){
+            if(aux.proximo.valor == numero){
+                aux.proximo = aux.proximo.proximo;
+                break;
+            }
+            else{
+                aux = aux.proximo;
+            }
+            if(aux.proximo.proximo == null){
+                aux.proximo = null;
+                ultimo.valor = aux.valor;
+            }
+            if(primeiro.valor == numero){
+                primeiro = primeiro.proximo;
+                break;
+            }
+        }
+        contador--;
+    }
+
+    public int tamanho(){
+        return contador;
+    }
+
+}
+
