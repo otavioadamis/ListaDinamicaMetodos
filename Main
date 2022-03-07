@@ -1,0 +1,34 @@
+public class Main {
+
+    public static void main(String[] args) {
+
+        ListaDinamica lista = new ListaDinamica();
+
+        lista.add(1);
+        lista.add(3);
+        lista.add(5);
+        lista.add(9);
+
+        int tamanho = lista.tamanho();
+        System.out.println("Tamanho da lista: " + tamanho);
+
+        lista.show();
+        lista.remover(5);
+
+        System.out.println("removendo numero");
+        lista.show();
+
+        tamanho = lista.tamanho();
+        System.out.println("Tamanho da lista: " + tamanho);
+
+
+
+        /*lista.buscar(9); //buscar numero específico (b)
+        int i = lista.get(2); //buscar numero pela posição na lista (metodo get)
+
+        System.out.println("Número = " + i);*/
+
+
+    }
+
+}
